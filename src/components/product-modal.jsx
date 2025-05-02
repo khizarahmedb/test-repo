@@ -291,7 +291,9 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
           product.id,
           formattedData
         );
-        console.log(formattedData);
+        console.log("sending this data", formattedData);
+
+        console.log("PRODUCT UPDATED", response);
         if (response && response.product) {
           setProducts(
             products.map((p) => (p.id === product.id ? response.product : p))

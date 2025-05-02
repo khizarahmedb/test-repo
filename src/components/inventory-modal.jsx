@@ -16,6 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useUser } from "@/context/userContext";
 import {
@@ -30,6 +31,7 @@ export function InventoryModal({ isOpen, onClose, mode, inventoryItem }) {
   const [formData, setFormData] = useState({
     stock_name: "",
     delimiter: ",", // Default delimiter
+    items: "", // Added items field
   });
 
   // Initialize form data when modal opens or changes mode
@@ -38,12 +40,14 @@ export function InventoryModal({ isOpen, onClose, mode, inventoryItem }) {
       setFormData({
         stock_name: inventoryItem.stock_name || "",
         delimiter: inventoryItem.delimiter || ",",
+        items: inventoryItem.items || "", // Initialize items field for edit mode
       });
     } else {
       // Reset form for add mode
       setFormData({
         stock_name: "",
         delimiter: ",",
+        items: "", // Reset items field for add mode
       });
     }
     setIsSubmitting(false);
@@ -161,7 +165,7 @@ export function InventoryModal({ isOpen, onClose, mode, inventoryItem }) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="no-scrollbar bg-black text-white border-gray-800 max-h-[90vh] overflow-y-auto">
+      <DialogContent className="no-scrollbar bg-[#0a0a14] text-white border border-[#5D43E1] max-h-[90vh] overflow-y-auto max-w-xl w-full rounded-xl p-6">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold text-white">
             {mode === "add" ? "Add Stock" : "Edit Stock"}
@@ -181,30 +185,61 @@ export function InventoryModal({ isOpen, onClose, mode, inventoryItem }) {
         )}
 
         <div className="grid gap-4 py-4">
-          {/* Stock Name */}
-          <Textarea
-            name="stock_name"
-            placeholder="Stock"
-            value={formData.stock_name}
-            onChange={handleInputChange}
-            className="bg-gray-900 border-gray-700 min-h-[150px]"
-            disabled={isSubmitting}
-          />
+          {/* Stock Name - Changed from Textarea to Input */}
+          <div className="space-y-2">
+            <label htmlFor="stock_name" className="text-sm text-gray-400">
+              Stock Name
+            </label>
+            <Input
+              id="stock_name"
+              name="stock_name"
+              placeholder="Enter stock name"
+              value={formData.stock_name}
+              onChange={handleInputChange}
+              className="bg-gray-900 border-gray-700"
+              disabled={isSubmitting}
+            />
+          </div>
+
+          {/* Items - New Textarea field */}
+          <div className="space-y-2">
+            <label htmlFor="items" className="text-sm text-gray-400">
+              Items
+            </label>
+            <Textarea
+              id="items"
+              name="items"
+              placeholder="Enter items (e.g. bottle 1, bottle 2, bottle 3)"
+              value={formData.items}
+              onChange={handleInputChange}
+              className="bg-gray-900 border-gray-700 min-h-[150px]"
+              disabled={isSubmitting}
+            />
+          </div>
 
           {/* Delimiter */}
-          <Select
-            value={formData.delimiter}
-            onValueChange={(value) => handleSelectChange("delimiter", value)}
-          >
-            <SelectTrigger className="bg-gray-900 border-gray-700">
-              <SelectValue placeholder="Delimiter" />
-            </SelectTrigger>
-            <SelectContent className="bg-gray-900 border-gray-700">
-              <SelectItem value=",">Comma</SelectItem>
-              <SelectItem value=";">Semi colon</SelectItem>
-              <SelectItem value="|">New line</SelectItem>
-            </SelectContent>
-          </Select>
+          <div className="space-y-2">
+            <label htmlFor="delimiter" className="text-sm text-gray-400">
+              Delimiter
+            </label>
+            <Select
+              value={formData.delimiter}
+              onValueChange={(value) => handleSelectChange("delimiter", value)}
+              disabled={isSubmitting}
+            >
+              <SelectTrigger
+                id="delimiter"
+                className="bg-gray-900 border-gray-700"
+              >
+                <SelectValue placeholder="Delimiter" />
+              </SelectTrigger>
+              <SelectContent className="bg-gray-900 border-gray-700">
+                <SelectItem value=",">Comma</SelectItem>
+                <SelectItem value=";">Semi colon</SelectItem>
+                <SelectItem value="|">New line</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
 
         {/* Action Buttons */}

@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { ArrowBigRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { ArrowBigRight, RefreshCw } from "lucide-react";
 import { useUser } from "@/context/userContext";
 import { CustomTable } from "@/components/custom-table";
+import { ReplaceProductModal } from "@/components/ticket-replace-modal";
 
 export default function Tickets() {
   const { tickets } = useUser();
+  const [isReplaceModalOpen, setIsReplaceModalOpen] = useState(false);
+  const [selectedTicket, setSelectedTicket] = useState(null);
 
   useEffect(() => {
     console.log("Tickets data:", tickets);
@@ -19,6 +21,11 @@ export default function Tickets() {
 
   const handleViewTicketDetails = (ticket) => {
     console.log("View Details clicked for:", ticket, "- Implement modal logic");
+  };
+
+  const handleReplaceProduct = (ticket) => {
+    setSelectedTicket(ticket);
+    setIsReplaceModalOpen(true);
   };
 
   const columns = [
@@ -72,12 +79,22 @@ export default function Tickets() {
     {
       id: "actions",
       header: "",
-      cell: ({ row }) => (
-        <ArrowBigRight
-          className="h-4 w-4 cursor-pointer text-white"
-          onClick={() => handleViewTicketDetails(row.original)}
-        />
-      ),
+      cell: ({ row }) => {
+        const ticket = row.original;
+        return (
+          <div className="flex items-center space-x-2">
+            <ArrowBigRight
+              className="h-4 w-4 cursor-pointer text-white"
+              onClick={() => handleViewTicketDetails(ticket)}
+            />
+            <RefreshCw
+              className="h-4 w-4 cursor-pointer text-purple-500 hover:text-purple-400"
+              onClick={() => handleReplaceProduct(ticket)}
+              title="Replace Product"
+            />
+          </div>
+        );
+      },
     },
   ];
 
@@ -88,6 +105,13 @@ export default function Tickets() {
       </div>
 
       <CustomTable columns={columns} data={tickets || []} />
+
+      {/* Replace Product Modal */}
+      <ReplaceProductModal
+        isOpen={isReplaceModalOpen}
+        onClose={() => setIsReplaceModalOpen(false)}
+        ticket={selectedTicket}
+      />
     </div>
   );
 }

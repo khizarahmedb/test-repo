@@ -12,7 +12,7 @@ export default function Products() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState("add");
   const [selectedProduct, setSelectedProduct] = useState(null);
-
+  console.log(products);
   const handleAddProduct = () => {
     setModalMode("add");
     setSelectedProduct(null);

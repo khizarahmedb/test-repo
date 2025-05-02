@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const API_BASE_URL = "https://back.invader.shop/api";
-const API_BASE_URL = "http://localhost:9003/api";
+const API_BASE_URL = "https://back.invader.shop/api";
+// const API_BASE_URL = "http://localhost:9003/api";
 // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJasdasdasdasd1c2VyX2lkIjo1LCJpYaksndkawnXQiOjE3NDQ2MTUyNDcsImV4cCI6MTc0NDc4ODA0N30.gz8gvQjXBKMqYZ9ewjz9a5XffXpt8L8VYrrJ6_PAvsI"
 
 const api = axios.create({
@@ -301,5 +301,58 @@ export async function uploadFile(file) {
     throw error;
   }
 }
+
+// New API methods for the ReplaceProductModal component
+
+// Get a single product by ID
+export const getProductById = async (token, productId) => {
+  try {
+    const response = await api.get(`/product/${productId}`, {
+      headers: {
+        "x-token": token,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Get Product Error:", error.response?.data || error.message);
+    throw error;
+  }
+};
+
+// Get inventory items by stock ID
+export const getInventoryItemsByStockId = async (token, stockId) => {
+  try {
+    const response = await api.get(`/inventory-items/${stockId}`, {
+      headers: {
+        "x-token": token,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Get Inventory Items Error:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
+};
+
+// Replace product for a ticket
+export const replaceProductForTicket = async (token, ticketId, body) => {
+  try {
+    const response = await api.put(`/ticket/replace/${ticketId}`, body, {
+      headers: {
+        "x-token": token,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Replace Product Error:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
+};
 
 export default api;
