@@ -57,7 +57,7 @@ export function ReplaceProductModal({ isOpen, onClose, ticket }) {
   const fetchProductData = async (productId) => {
     try {
       const response = await axios.get(
-        `$https://back.invader.shop/api/product/${productId}`,
+        `https://back.invader.shop/api/product/${productId}`,
         {
           headers: { "x-token": user.token },
         }
@@ -83,7 +83,7 @@ export function ReplaceProductModal({ isOpen, onClose, ticket }) {
     try {
       console.log("Fetching inventory items for stock ID:", stockId);
       const response = await axios.get(
-        `$https://back.invader.shop/api/inventory-items/${stockId}`,
+        `https://back.invader.shop/api/inventory-items/${stockId}`,
         {
           headers: { "x-token": user.token },
         }
@@ -122,7 +122,7 @@ export function ReplaceProductModal({ isOpen, onClose, ticket }) {
       setErrorMessage("");
 
       const response = await axios.put(
-        `$https://back.invader.shop/api/ticket/replace/${ticket.id}`,
+        `https://back.invader.shop/api/ticket/replace/${ticket.id}`,
         formData,
         {
           headers: { "x-token": user.token },
