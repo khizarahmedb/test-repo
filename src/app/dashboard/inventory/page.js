@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowBigRight } from "lucide-react";
+import { ArrowBigRight, SquarePlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@/context/userContext";
 import { CustomTable } from "@/components/custom-table";
@@ -98,6 +98,9 @@ export default function Inventory() {
           size={"lg"}
           onClick={handleAddInventory}
         >
+          <div className="pr-2">
+            <SquarePlus className="h-5 w-5 "></SquarePlus>
+          </div>
           Add Inventory Item
         </Button>
       </div>

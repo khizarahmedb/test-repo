@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowBigRight } from "lucide-react";
+import { ArrowBigRight, SquarePlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@/context/userContext";
 import { CustomTable } from "@/components/custom-table";
@@ -93,11 +93,13 @@ export default function Coupons() {
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-bold text-white ">Coupons</h1>
         <Button
-          variant="outline"
-          className="bg-purple-500 text-white hover:bg-purple-600"
+          className="bg-gradient-to-r from-purple-700 to-purple-500 text-white hover:bg-purple-600"
           size={"lg"}
           onClick={handleAddCoupon}
         >
+          <div className="pr-2">
+            <SquarePlus className="h-5 w-5"></SquarePlus>
+          </div>
           Add Coupon
         </Button>
       </div>

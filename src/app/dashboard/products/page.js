@@ -1,5 +1,5 @@
 "use client";
-import { ArrowBigRight } from "lucide-react";
+import { ArrowBigRight, SquarePlus } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -111,6 +111,9 @@ export default function Products() {
           size={"lg"}
           onClick={handleAddProduct}
         >
+          <div className="pr-2">
+            <SquarePlus className="h-5 w-5"></SquarePlus>
+          </div>
           Add Product
         </Button>
       </div>

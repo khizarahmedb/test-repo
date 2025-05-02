@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react"; // Added useRef
+import { useState, useEffect, useRef } from "react";
 import { X, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -328,9 +328,9 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="no-scrollbar bg-black text-white border-gray-800 max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="text-xl font-bold text-white">
+      <DialogContent className="no-scrollbar bg-[#0a0a14] text-white border border-[#5D43E1] max-h-[90vh] overflow-y-auto max-w-xl w-full rounded-xl p-6">
+        <DialogHeader className="mb-2">
+          <DialogTitle className="text-2xl font-medium text-white">
             {mode === "add" ? "Add Product" : "Edit Product"}
           </DialogTitle>
         </DialogHeader>
@@ -355,12 +355,12 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
             value={formData.stock_id.toString()}
             onValueChange={handleStockChange}
           >
-            <SelectTrigger className="bg-gray-900 border-gray-700">
+            <SelectTrigger className="bg-[#13131f] border-[#2a2a3c] rounded-md text-sm h-10">
               <SelectValue placeholder="Select Stock">
                 {formData.stock_name}
               </SelectValue>
             </SelectTrigger>
-            <SelectContent className="bg-gray-900 border-gray-700">
+            <SelectContent className="bg-[#13131f] border-[#2a2a3c] text-white">
               <SelectItem value="0">Select Stock</SelectItem>
               {inventory && inventory.length > 0 ? (
                 inventory.map((item) => (
@@ -382,7 +382,7 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
             placeholder="Name"
             value={formData.name}
             onChange={handleInputChange}
-            className="bg-gray-900 border-gray-700"
+            className="bg-[#13131f] border-[#2a2a3c] rounded-md text-sm h-10"
           />
 
           {/* Description */}
@@ -391,7 +391,7 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
             placeholder="Description"
             value={formData.description}
             onChange={handleInputChange}
-            className="bg-gray-900 border-gray-700"
+            className="bg-[#13131f] border-[#2a2a3c] rounded-md text-sm min-h-[80px]"
           />
 
           {/* Price and Delivery Time */}
@@ -401,10 +401,10 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
                 value={formData.currency}
                 onValueChange={(value) => handleSelectChange("currency", value)}
               >
-                <SelectTrigger className="w-20 bg-gray-900 border-gray-700 rounded-r-none">
+                <SelectTrigger className="w-20 bg-[#13131f] border-[#2a2a3c] rounded-md text-sm h-10 rounded-r-none">
                   <SelectValue placeholder="PKR" />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-900 border-gray-700">
+                <SelectContent className="bg-[#13131f] border-[#2a2a3c] text-white">
                   <SelectItem value="PKR">PKR</SelectItem>
                   <SelectItem value="USD">USD</SelectItem>
                   <SelectItem value="EUR">EUR</SelectItem>
@@ -417,7 +417,7 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
                 placeholder="Price"
                 value={formData.price || ""}
                 onChange={handleNumberInputChange}
-                className="flex-1 bg-gray-900 border-gray-700 rounded-l-none"
+                className="flex-1 bg-[#13131f] border-[#2a2a3c] rounded-md text-sm h-10 rounded-l-none"
               />
             </div>
             <Select
@@ -426,10 +426,10 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
                 handleSelectChange("delivery_time", value)
               }
             >
-              <SelectTrigger className="bg-gray-900 border-gray-700">
+              <SelectTrigger className="bg-[#13131f] border-[#2a2a3c] rounded-md text-sm h-10">
                 <SelectValue placeholder="Delivery Time" />
               </SelectTrigger>
-              <SelectContent className="bg-gray-900 border-gray-700">
+              <SelectContent className="bg-[#13131f] border-[#2a2a3c] text-white">
                 <SelectItem value="Instant">Instant</SelectItem>
                 <SelectItem value="1-2 days">1-2 days</SelectItem>
                 <SelectItem value="3-5 days">3-5 days</SelectItem>
@@ -450,10 +450,10 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
                       ? "default"
                       : "outline"
                   }
-                  className={`cursor-pointer ${
+                  className={`cursor-pointer text-xs rounded-md px-2 py-1 ${
                     formData.variations.includes(variation)
-                      ? "bg-purple-600 hover:bg-purple-700"
-                      : "bg-transparent text-gray-400 hover:text-white border-gray-600" // Added border for outline
+                      ? "bg-[#13131f] text-white"
+                      : "bg-transparent text-gray-400 hover:text-white border border-[#2a2a3c]"
                   }`}
                   onClick={() => handleVariationToggle(variation)}
                 >
@@ -473,7 +473,7 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
                     ? `${formData.variations.length} variation(s) selected`
                     : "Select Variations"
                 }
-                className="bg-gray-900 border-gray-700 cursor-default"
+                className="bg-[#13131f] border-[#2a2a3c] rounded-md text-sm h-10 cursor-default"
               />
             </div>
           </div>
@@ -486,10 +486,10 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
                 handleSelectChange("availability", value)
               }
             >
-              <SelectTrigger className="bg-gray-900 border-gray-700">
+              <SelectTrigger className="bg-[#13131f] border-[#2a2a3c] rounded-md text-sm h-10">
                 <SelectValue placeholder="Availability" />
               </SelectTrigger>
-              <SelectContent className="bg-gray-900 border-gray-700">
+              <SelectContent className="bg-[#13131f] border-[#2a2a3c] text-white">
                 <SelectItem value="available">Available</SelectItem>
                 <SelectItem value="out_of_stock">Out of Stock</SelectItem>
                 <SelectItem value="coming_soon">Coming Soon</SelectItem>
@@ -502,7 +502,7 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
               placeholder="Stock (leave empty if using Stock ID)"
               value={formData.stock || ""}
               onChange={handleNumberInputChange}
-              className="bg-gray-900 border-gray-700"
+              className="bg-[#13131f] border-[#2a2a3c] rounded-md text-sm h-10"
             />
           </div>
 
@@ -513,10 +513,10 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
               handleSelectChange("stock_delimiter", value)
             }
           >
-            <SelectTrigger className="bg-gray-900 border-gray-700">
+            <SelectTrigger className="bg-[#13131f] border-[#2a2a3c] rounded-md text-sm h-10">
               <SelectValue placeholder="Stock Delimiter" />
             </SelectTrigger>
-            <SelectContent className="bg-gray-900 border-gray-700">
+            <SelectContent className="bg-[#13131f] border-[#2a2a3c] text-white">
               <SelectItem value="comma">Comma</SelectItem>
               <SelectItem value="semicolon">Semi colon</SelectItem>
               <SelectItem value="newline">New line</SelectItem>
@@ -531,7 +531,7 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
               placeholder="Low Stock Alert Limit"
               value={formData.low_stock_alert || ""}
               onChange={handleNumberInputChange}
-              className="bg-gray-900 border-gray-700"
+              className="bg-[#13131f] border-[#2a2a3c] rounded-md text-sm h-10"
               // Remove or modify this condition if you want these fields always enabled
               // disabled={formData.stock_id === 0}
             />
@@ -541,7 +541,7 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
               placeholder="Out of Stock Alert Limit"
               value={formData.out_of_stock || ""}
               onChange={handleNumberInputChange}
-              className="bg-gray-900 border-gray-700"
+              className="bg-[#13131f] border-[#2a2a3c] rounded-md text-sm h-10"
               // Remove or modify this condition if you want these fields always enabled
               // disabled={formData.stock_id === 0}
             />
@@ -552,19 +552,21 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
             {" "}
             {/* Wrapper for button and status */}
             <Button
-              type="button" // Prevent default form submission
+              type="button"
               variant="outline"
-              className="w-full h-24 bg-gray-900 border-gray-700 hover:bg-gray-800 disabled:opacity-50"
-              onClick={handleUploadButtonClick} // Attach click handler
-              disabled={isUploading} // Disable when uploading
+              className="w-full h-24 bg-[#13131f] border-[#2a2a3c] hover:bg-[#1a1a2e] flex items-center justify-center"
+              onClick={handleUploadButtonClick}
+              disabled={isUploading}
             >
               <div className="flex flex-col items-center justify-center">
-                <Upload className="h-6 w-6 mb-2" />
-                {isUploading
-                  ? "Uploading..."
-                  : mode === "add"
-                  ? "Upload Product Image"
-                  : "Update Image"}
+                <Upload className="h-6 w-6 mb-2 text-gray-400" />
+                <span className="text-sm text-gray-300">
+                  {isUploading
+                    ? "Uploading..."
+                    : mode === "add"
+                    ? "Upload Product Image"
+                    : "Update Image"}
+                </span>
               </div>
             </Button>
             {/* Hidden file input */}
@@ -606,7 +608,7 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
               id="removeSoldStock"
               checked={formData.remove_sold_stock === "true"}
               onCheckedChange={handleCheckboxChange}
-              className="border-gray-600 data-[state=checked]:bg-purple-600" // Style checkbox
+              className="border-[#2a2a3c] data-[state=checked]:bg-[#7c3aed] data-[state=checked]:border-[#7c3aed]" // Style checkbox
               disabled={formData.stock_id === 0} // Disable if no stock ID is selected
             />
             <label
@@ -619,18 +621,18 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
         </div>
 
         {/* Action Buttons */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 mt-4">
           <Button
             variant="outline"
             onClick={onClose}
-            className="bg-gray-800 hover:bg-gray-700 border-gray-700"
+            className="bg-[#13131f] hover:bg-[#1a1a2e] border-[#2a2a3c] text-white rounded-md"
           >
             Cancel
           </Button>
           <Button
             onClick={handleSave}
-            className="bg-purple-600 hover:bg-purple-700"
-            disabled={isUploading} // Disable save while uploading
+            className="bg-[#7c3aed] hover:bg-[#6d28d9] border-none text-white rounded-md"
+            disabled={isUploading}
           >
             Save
           </Button>

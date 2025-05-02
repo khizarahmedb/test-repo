@@ -2,13 +2,13 @@
 
 import * as React from "react";
 import {
-  BarChart3,
-  Box,
-  CreditCard,
+  ChartSpline,
+  FileText,
   LogOut,
   Package,
-  Tag,
-  Ticket,
+  Package2,
+  Receipt,
+  TicketPercent,
 } from "lucide-react";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
@@ -29,7 +29,7 @@ export function AdminSidebar() {
     {
       id: "dashboard",
       label: "Dashboard",
-      icon: BarChart3,
+      icon: ChartSpline,
       href: "/dashboard",
     },
     {
@@ -41,20 +41,25 @@ export function AdminSidebar() {
     {
       id: "invoices",
       label: "Invoices",
-      icon: CreditCard,
+      icon: Receipt,
       href: "/dashboard/invoices",
     },
-    { id: "coupons", label: "Coupons", icon: Tag, href: "/dashboard/coupons" },
+    {
+      id: "coupons",
+      label: "Coupons",
+      icon: TicketPercent,
+      href: "/dashboard/coupons",
+    },
     {
       id: "tickets",
       label: "Tickets",
-      icon: Ticket,
+      icon: FileText,
       href: "/dashboard/tickets",
     },
     {
       id: "inventory",
       label: "Inventory",
-      icon: Box,
+      icon: Package2,
       href: "/dashboard/inventory",
     },
   ];
@@ -76,17 +81,17 @@ export function AdminSidebar() {
       {/* Header with admin profile */}
       <div className="pt-6 pb-2">
         <div className="flex flex-col items-center gap-2 px-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 overflow-hidden">
-            {/* <Image
+          {/* <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 overflow-hidden"> */}
+          {/* <Image
               src="/placeholder.svg?height=48&width=48"
               alt="Admin avatar"
               width={48}
               height={48}
               className="rounded-full"
             /> */}
-          </div>
+          {/* </div> */}
           <div className="flex flex-col items-center">
-            <span className="text-xs text-white/70">Admin</span>
+            <span className="text-2xl text-white">Admin</span>
           </div>
         </div>
       </div>
@@ -127,7 +132,7 @@ export function AdminSidebar() {
       <div className="px-4 pb-6">
         <button
           onClick={handleLogout}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-white/10 px-4 py-3 text-sm font-medium text-white hover:bg-white/20 transition-colors"
+          className="flex w-full items-center bg-white justify-center gap-2 rounded-xl  px-4 py-3 text-sm font-medium text-[#972cf0] cursor-pointer transition-colors"
         >
           <LogOut className="h-5 w-5" />
           Logout

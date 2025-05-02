@@ -161,12 +161,11 @@ export function CouponModal({ isOpen, onClose, mode, coupon }) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="no-scrollbar bg-black text-white border-gray-800 max-h-[90vh] overflow-y-auto">
+      <DialogContent className="no-scrollbar bg-[#0a0a14] text-white border border-[#5D43E1] max-h-[90vh] overflow-y-auto max-w-xl w-full rounded-xl p-6">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold text-white">
             {mode === "add" ? "Add Coupon" : "Edit Coupon"}
           </DialogTitle>
-          <CloseButton />
         </DialogHeader>
 
         {/* Delete button only shown in edit mode */}

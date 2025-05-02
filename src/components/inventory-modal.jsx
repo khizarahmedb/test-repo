@@ -166,7 +166,6 @@ export function InventoryModal({ isOpen, onClose, mode, inventoryItem }) {
           <DialogTitle className="text-xl font-bold text-white">
             {mode === "add" ? "Add Stock" : "Edit Stock"}
           </DialogTitle>
-          <CloseButton />
         </DialogHeader>
 
         {/* Delete button only shown in edit mode */}

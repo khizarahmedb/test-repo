@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://back.invader.shop/api";
-// const API_BASE_URL = "http://localhost:9003/api";
+// const API_BASE_URL = "https://back.invader.shop/api";
+const API_BASE_URL = "http://localhost:9003/api";
 // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJasdasdasdasd1c2VyX2lkIjo1LCJpYaksndkawnXQiOjE3NDQ2MTUyNDcsImV4cCI6MTc0NDc4ODA0N30.gz8gvQjXBKMqYZ9ewjz9a5XffXpt8L8VYrrJ6_PAvsI"
 
 const api = axios.create({
