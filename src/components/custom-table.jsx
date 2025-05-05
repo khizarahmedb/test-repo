@@ -100,7 +100,7 @@ export function CustomTable({
           {/* Table Header with gradient and sorting */}
           <TableHeader
             className={
-              "bg-gradient-to-r from-purple-700 to-purple-500 overflow-hidden"
+              "rounded-[12px] bg-[linear-gradient(90deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0)_22.94%,rgba(255,255,255,0)_72.33%,rgba(255,255,255,0.2)_100%),linear-gradient(119deg,#5D43E1_12.9%,#AB51DE_86.02%)] overflow-hidden"
             }
           >
             {table.getHeaderGroups().map((headerGroup) => (
