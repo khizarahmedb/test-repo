@@ -77,7 +77,11 @@ export function AdminSidebar() {
   };
 
   return (
-    <div className="w-[280px] rounded-3xl m-6 bg-gradient-to-b from-purple-500 to-purple-700 flex flex-col">
+    <div
+      className="w-[280px] m-6 rounded-[28px] border-[0.5px] border-[#5D43E1]
+  bg-[linear-gradient(90deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0)_22.94%,rgba(255,255,255,0)_72.33%,rgba(255,255,255,0.2)_100%),linear-gradient(119deg,#5D43E1_12.9%,#AB51DE_86.02%)]
+  shadow-[0px_64px_64px_-32px_rgba(41,15,0,0.56)] backdrop-blur-[5px] flex flex-col"
+    >
       {/* Header with admin profile */}
       <div className="pt-6 pb-2">
         <div className="flex flex-col items-center gap-2 px-4">
