@@ -633,7 +633,7 @@ export function ProductModal({ isOpen, onClose, mode, product }) {
           </Button>
           <Button
             onClick={handleSave}
-            className="bg-[#7c3aed] hover:bg-[#6d28d9] border-none text-white rounded-md"
+            className="rounded-[12px] hover:bg-none hover:bg-white hover:text-black bg-[linear-gradient(90deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0)_22.94%,rgba(255,255,255,0)_72.33%,rgba(255,255,255,0.2)_100%),linear-gradient(119deg,#5D43E1_12.9%,#AB51DE_86.02%)]"
             disabled={isUploading}
           >
             Save

@@ -254,7 +254,7 @@ export function InventoryModal({ isOpen, onClose, mode, inventoryItem }) {
           </Button>
           <Button
             onClick={handleSave}
-            className="bg-purple-600 hover:bg-purple-700"
+            className="rounded-[12px] hover:bg-none hover:bg-white hover:text-black bg-[linear-gradient(90deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0)_22.94%,rgba(255,255,255,0)_72.33%,rgba(255,255,255,0.2)_100%),linear-gradient(119deg,#5D43E1_12.9%,#AB51DE_86.02%)]"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Saving..." : mode === "add" ? "Add Stock" : "Save"}

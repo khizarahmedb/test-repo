@@ -181,6 +181,12 @@ input:-webkit-autofill:active {
 }
 .coolvetica {
   font-family: "coolvetica";
-  letter-spacing: 0.1em;
+  line-height: 20px;
   font-weight: 300;
 }
+
+/* body {
+  font-family: "coolvetica";
+
+  font-weight: 300;
+} */

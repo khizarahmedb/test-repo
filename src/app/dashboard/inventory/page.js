@@ -94,7 +94,7 @@ export default function Inventory() {
         <h1 className="text-2xl font-bold text-white ">Inventory </h1>
         <Button
           variant="outline"
-          className="bg-purple-500 text-white hover:bg-purple-600"
+          className="rounded-[12px] text-white bg-[linear-gradient(90deg,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0)_22.94%,rgba(255,255,255,0)_72.33%,rgba(255,255,255,0.2)_100%),linear-gradient(119deg,#5D43E1_12.9%,#AB51DE_86.02%)] hover:bg-white hover:bg-none hover:text-black transition duration-300"
           size={"lg"}
           onClick={handleAddInventory}
         >
