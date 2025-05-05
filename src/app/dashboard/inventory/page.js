@@ -50,7 +50,7 @@ export default function Inventory() {
         const status = row.original.status;
         const statusClass = status?.toLowerCase().includes("out of stock")
           ? "text-red-500"
-          : status?.toLowerCase().includes("available")
+          : status?.toLowerCase().includes("in stock")
           ? "text-green-500"
           : "text-white";
         return <span className={statusClass}>{status || "N/A"}</span>;

@@ -58,9 +58,9 @@ export default function Tickets() {
       cell: ({ row }) => {
         const status = row.original.status;
         const statusClass =
-          status?.toLowerCase() === "open"
-            ? "text-yellow-500"
-            : status?.toLowerCase() === "closed"
+          status?.toLowerCase() === "unresolved"
+            ? "text-red-500"
+            : status?.toLowerCase() === "resolved"
             ? "text-green-500"
             : status?.toLowerCase() === "pending"
             ? "text-blue-500"
